@@ -1,6 +1,6 @@
-from fastapi import FastAPI, Response, status, HTTPException, Depends, APIRouter
+from fastapi import status, HTTPException, Depends, APIRouter
 from sqlalchemy.orm import Session
-from typing import List, Optional
+from typing import List
 from core import auth as core_auth
 # from sqlalchemy.sql.functions import func
 from database import get_db
