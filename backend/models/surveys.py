@@ -1,11 +1,7 @@
-from time import time
 from sqlalchemy import Column, Integer, String, ForeignKey
-from sqlalchemy.orm import relationship
-from sqlalchemy.sql.expression import text
 from sqlalchemy.sql.sqltypes import TIMESTAMP
-from sqlalchemy.orm import backref
-from .base import Base
-
+from sqlalchemy.orm import relationship
+from database import Base
 
 
 class Survey(Base):
@@ -15,4 +11,6 @@ class Survey(Base):
     gender = Column(String)
     disability = Column(String)
     created_date = Column(TIMESTAMP(timezone=True))
-    user_uuid = Column(String, ForeignKey("users.uuid", ondelete="CASCADE"),nullable=False)
+    user_uuid = Column(String, ForeignKey("users.uuid", ondelete="CASCADE"),
+    unique=True, nullable=False)
+    users = relationship("User", back_populates="survey", uselist=False)

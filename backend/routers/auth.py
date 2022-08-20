@@ -11,7 +11,7 @@ from core.utils import verify
 
 router = APIRouter()
 
-@router.post('/login',response_model=schemas.Token)
+@router.post('/',response_model=schemas.Token)
 def login(user_creds: OAuth2PasswordRequestForm = Depends(), db: Session = Depends(get_db)):
     user = db.query(User).filter(User.email == user_creds.username).first()
     if not user:
