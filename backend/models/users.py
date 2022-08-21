@@ -20,4 +20,5 @@ class User(Base):
     state = Column(String)
     school = Column(String)
     created_date = Column(TIMESTAMP(timezone=True))
+    phone_number = Column(String)
     survey = relationship("Survey", back_populates="users")

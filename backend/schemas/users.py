@@ -19,6 +19,7 @@ class UserBase(BaseModel):
     state: str
     school: str
     created_date: datetime = datetime.now()
+    phone_number: str
 
     class Config:
         orm_mode = True
@@ -35,6 +36,7 @@ class UserOut(BaseModel):
     state: str
     school: str
     created_date: datetime
+    phone_number: str
 
     class Config:
         orm_mode = True
