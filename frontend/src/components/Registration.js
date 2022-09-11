@@ -2,23 +2,27 @@ import { useRef, useState, useEffect } from "react";
 import React from 'react'
 import { faCheck, faInfoCircle } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-// import axios from '../api/Axios';
+import axios from '../api/Axios';
 import { Link } from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
 import "bootstrap/dist/css/bootstrap.min.css"
 // import Login from "./UserLogin";
 
 const EMAIL_REGEX = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
-
+const REGISTER_URL="/users";
 
 const Registration = () => {
 
     const emailRef = useRef();
     const errRef = useRef();
+    const navigate = useNavigate()
 
     const [email, setEmail] = useState('');
     const [validEmail, setValidName] = useState(false);
     const [emailFocus, setEmailFocus] = useState(false);
+
+    const [fullName, setFullName] = useState('');
 
     const [pwd, setPwd] = useState('');
     const [validPwd, setValidPwd] = useState(false);
@@ -28,11 +32,10 @@ const Registration = () => {
     const [validMatch, setValidMatch] = useState(false);
     const [matchFocus, setMatchFocus] = useState(false);
 
-    const currentDate = useState(new Date())
-    const [birthDate, setBirthDate] = useState(currentDate)
+    const currDate = new Date().toISOString().slice(0,10)
+    const [birthDate, setBirthDate] = useState(currDate)
 
     const [errMsg, setErrMsg] = useState('');
-    const [success, setSuccess] = useState(false);
 
     useEffect(() => {
         emailRef.current.focus();
@@ -60,44 +63,41 @@ const Registration = () => {
             setErrMsg("Invalid Entry");
             return;
         }
-        // try {
-            //     const response = await axios.post(REGISTER_URL,
-            //         JSON.stringify({ user, pwd }),
-            //         {
-                //             headers: { 'Content-Type': 'application/json' },
-                //             withCredentials: true
-                //         }
-                //     );
-                //     // TODO: remove console.logs before deployment
-                //     console.log(JSON.stringify(response?.data));
-                
-                //console.log(JSON.stringify(response))
-        setSuccess(true);
+        let inputData = { 'uuid': '',
+                        'email': email, 
+                        'password': pwd,
+                        "full_name": fullName, 
+                        "date_of_birth": birthDate.toString().replace(/-/g,'_'),
+                        "created_date": currDate.replace(/-/g,'_'), }
+        console.log(inputData)
+        try {
+        const response = await axios.post(REGISTER_URL,
+            inputData,
+            {
+                withCredentials: true
+            }
+        );
+                // TODO: remove console.logs before deployment
+        console.log(JSON.stringify(response?.data));
+            
         //clear state and controlled inputs
         setEmail('');
         setPwd('');
         setMatchPwd('');
-        // } catch (err) {
-            //     if (!err?.response) {
-                //         setErrMsg('No Server Response');
-                //     } else if (err.response?.status === 409) {
-                    //         setErrMsg('Username Taken');
-                    //     } else {
-                        //         setErrMsg('Registration Failed')
-                        //     }
-                        //     errRef.current.focus();
-                        // }
+        navigate("/login");
+        } catch (err) {
+            if (!err?.response) {
+                    setErrMsg('No Server Response');
+                } else if (err.response?.status === 403) {
+                        setErrMsg('Email already exists');
+                    } else {
+                            setErrMsg('Registration Failed')
+                        }
+                        errRef.current.focus();
+        }
     }
     return (
     <>
-    {success ? (
-        <div>
-            <h1>Success!</h1>
-            <p>
-                <a href="#">Sign In</a>
-            </p>
-        </div>
-    ) : (
         <div style={{
             paddingTop: "10%",
             height: "150"}}>
@@ -128,16 +128,44 @@ const Registration = () => {
                                         onFocus={() => setEmailFocus(true)}
                                         onBlur={() => setEmailFocus(false)}
                                         required/>
-                                    {/* <p id='uidnote' className={emailFocus && email && !validEmail ? 'show' : 'hidden'}> */}
                                     {emailFocus && email && !validEmail &&
                                         <p>
                                         <FontAwesomeIcon icon={faInfoCircle} />
                                         Enter a valid email we can contact you at.
                                         </p>
                                     }
-                                    {/* </p> */}
-                                    <br />
                                     </div>
+                                    <br />
+                                    <div>
+                                    <label htmlFor="fullName"> Full Name 
+                                        </label>
+                                    <input type="text"
+                                        placeholder="Name"
+                                        id="fullName"
+                                        className="form-control"
+                                        autoComplete="off"
+                                        onChange={(e) => setFullName(e.target.value)}
+                                        value={fullName}
+                                        required/>
+                                    </div>
+                                    <br />
+                                    <div>
+                                        <label htmlFor="date">
+                                            Date of Birth
+                                        </label>
+                                        <input
+                                            id="date"
+                                            className="form-control"
+                                            label="Birthdate"
+                                            type="date"
+                                            onChange={(e) => setBirthDate(e.target.value)}
+                                            defaultValue={birthDate}
+                                            InputLabelProps={{
+                                            shrink: true,
+                                            }}
+                                        />
+                                    </div>
+                                    <br />
                                     <div className="form-group">
                                     <label htmlFor="password">
                                         Password
@@ -175,34 +203,20 @@ const Registration = () => {
                                         type="password"
                                         id="confirm_pwd"
                                         className="form-control"
+                                        placeholder="Confirm Password"
                                         onChange={(e) => setMatchPwd(e.target.value)}
                                         value={matchPwd}
                                         required
                                         aria-invalid={validMatch ? "false" : "true"}
-                                        aria-describedby="confirmnote"
                                         onFocus={() => setMatchFocus(true)}
                                         onBlur={() => setMatchFocus(false)}
                                         />
-                                    <p id="confirmnote" className={matchFocus && !validMatch ? "instructions" : "offscreen"}>
+                                    {matchFocus && matchPwd && !validMatch &&
+                                        <p>
                                         <FontAwesomeIcon icon={faInfoCircle} />
                                         Passwords don't match!
-                                    </p>
-                                    </div>
-                                    <div>
-                                        <label htmlFor="date">
-                                            Date of Birth
-                                        </label>
-                                        <input
-                                            id="date"
-                                            className="form-control"
-                                            label="Choose your birthdate"
-                                            type="date"
-                                            onChange={(e) => setBirthDate(e.target.value)}
-                                            value={new Date().toISOString().slice(0,10)}
-                                            InputLabelProps={{
-                                            shrink: true,
-                                            }}
-                                        />
+                                        </p>
+                                    }
                                     </div>
                                     <br />
                                     <button className="btn btn-primary" style={{
@@ -223,8 +237,6 @@ const Registration = () => {
                     </div>
                 </div>
         </div>
-        )
-    }
     </>
     )
 }

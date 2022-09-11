@@ -2,6 +2,7 @@ from fastapi import status, HTTPException, Depends, APIRouter
 from sqlalchemy.orm import Session
 from typing import List, Optional
 from core import auth as core_auth
+from uuid import uuid4
 # from sqlalchemy.sql.functions import func
 from database import get_db
 import schemas.users as schemas
@@ -34,6 +35,7 @@ async def get_by_email(email: str, db: Session = Depends(get_db)):
 @router.post("/", response_model=schemas.UserOut)
 async def create_user(user_add: schemas.UserCreate, db: Session = Depends(get_db)):
     user_add.password = hash_password(user_add.password)
+    user_add.uuid = str(uuid4())
     new_user = User(**user_add.dict())
     user_query = db.query(User).filter(User.email == new_user.email).first()
     if user_query:
