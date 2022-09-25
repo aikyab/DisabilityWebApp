@@ -6,7 +6,6 @@ import axios from '../api/Axios';
 import { Link } from "react-router-dom";
 import { useNavigate } from 'react-router-dom';
 import "bootstrap/dist/css/bootstrap.min.css"
-// import Login from "./UserLogin";
 
 const EMAIL_REGEX = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
@@ -32,14 +31,14 @@ const Registration = () => {
     const [validMatch, setValidMatch] = useState(false);
     const [matchFocus, setMatchFocus] = useState(false);
 
-    const currDate = new Date().toISOString().slice(0,10)
-    const [birthDate, setBirthDate] = useState(currDate)
+    const currDate = new Date().toISOString().slice(0,10);
+    const [birthDate, setBirthDate] = useState(currDate);
 
     const [errMsg, setErrMsg] = useState('');
 
     useEffect(() => {
         emailRef.current.focus();
-    }, [])
+    }, []);
 
     useEffect(() => {
         setValidName(EMAIL_REGEX.test(email));
@@ -64,7 +63,7 @@ const Registration = () => {
             return;
         }
         let inputData = { 'uuid': '',
-                        'email': email, 
+                        'email': email,
                         'password': pwd,
                         "full_name": fullName, 
                         "date_of_birth": birthDate.toString().replace(/-/g,'_'),
@@ -232,7 +231,6 @@ const Registration = () => {
                             </div>
                         </div>
                         <div className="col-md-4 mb-5">
-                            
                         </div>
                     </div>
                 </div>
