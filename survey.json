@@ -1,0 +1,15 @@
+{
+    "university_type": "Public",
+    "us_state": "Illinois",
+    "geo_setting": "Urban",
+    "school_size": "Medium",
+    "selectivity": "Most Selective",
+    "gpa": 3.4,
+    "act": 1400,
+    "sat": 1450,
+    "general_accm": ["Preferred","Preferred","Preferred","Preferred",
+    "Preferred","Preferred","Preferred","Preferred","Preferred","Preferred","Preferred"],
+    "supports": ["Preferred","Preferred","Preferred","Preferred","Preferred"],
+    "other": ["Preferred","Preferred","Preferred","Preferred","Preferred"],
+    "majors": ["Computer Science","Information Technology","Machine Learning"]
+}

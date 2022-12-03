@@ -83,7 +83,7 @@ const Home = () => {
                                 <br/>
                             </div>
                             <div className="card-footer pt-0 border-top-0">
-                                <a href="#">lcushing@uic.edu</a>
+                                {/* <a href="#">lcushing@uic.edu</a> */}
                             </div>
                         </div>
                     </div>
@@ -98,7 +98,7 @@ const Home = () => {
                                     LEND Trainee 2021-2022</span>
                             </div>
                             <div className="card-footer pt-0 border-top-0">
-                                <a href="#">sdeang3@uic.edu</a>
+                                {/* <a href="#">sdeang3@uic.edu</a> */}
                             </div>
                         </div>
                     </div>
@@ -106,15 +106,16 @@ const Home = () => {
                         <div className="card mb-3">
                             {/* <img className="card-img-top" src="https://swe.students.uic.edu/wp-content/uploads/sites/594/2020/08/Webp.net-resizeimage-2-550x550.jpg" alt="John Doe" style="height: 300px; width: 300px;"> */}
                             <div className="card-body py-3">
-                                <h5 className="mb-0">Mallika Patil</h5>
-                                <span>Masters Graduate, Computer Science</span>
+                                <h5 className="mb-0">Aikya Banerjee</h5>
+                                <span>Web Developer <br />
+                                    Masters Graduate, Computer Science</span>
                                 <br/>
                                 <br/>
                                 <br/>
                                 <br/>
                             </div>
                             <div className="card-footer pt-0 border-top-0">
-                                <a href="#">email@email.com</a>
+                                {/* <a href="#">email@email.com</a> */}
                             </div>
                         </div>
                     </div>

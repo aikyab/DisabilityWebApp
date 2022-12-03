@@ -1,11 +1,22 @@
 from pydantic import BaseModel
+from typing import List
 from datetime import datetime
-from .users import UserOut
+# from .users import UserOut
 
 class SurveyBase(BaseModel):
-    age: int
-    gender: str
-    disability: str
+
+    university_type: str
+    us_state: str
+    geo_setting: str
+    school_size: str
+    selectivity: str
+    gpa: float
+    act: float
+    sat: float
+    general_accm: List[str]
+    supports: List[str]
+    other: List[str]
+    majors: List[str]
     created_date: datetime = datetime.now()
 
     class Config:
@@ -13,12 +24,19 @@ class SurveyBase(BaseModel):
 
 class SurveyOut(BaseModel):
     id: int
-    age: int
-    gender: str
-    disability: str
-    created_date: datetime
-    user_uuid: str
-    users: UserOut
+    university_type: str
+    us_state: str
+    geo_setting: str
+    school_size: str
+    selectivity: str
+    gpa: float
+    act: float
+    sat: float
+    general_accm: List[str]
+    supports: List[str]
+    other: List[str]
+    majors: List[str]
+    created_date: datetime = datetime.now()
 
     class Config:
         orm_mode = True

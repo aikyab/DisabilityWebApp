@@ -1,10 +1,13 @@
-# Pull base image
-FROM python:3.7
+FROM python:3.8
+WORKDIR /app
 
-WORKDIR /app/
+# set env variables
+ENV PYTHONDONTWRITEBYTECODE 1
+ENV PYTHONUNBUFFERED 1
 
-COPY ./requirements.txt /app/
-RUN pip install --no-cache-dir --upgrade -r /app/requirements.txt
+COPY ./requirements.txt /app
+RUN pip install --no-cache-dir -r /app/requirements.txt
+
 COPY . /app
 
-EXPOSE 8000
+CMD ["uvicorn", "main:app", "--reload"]

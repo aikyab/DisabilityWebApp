@@ -1,65 +1,41 @@
 import { useRef, useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import axios from '../api/Axios';
-import useAuth from '../hooks/useAuth';
-import Footer from './Footer';
+import { useDispatch, useSelector } from 'react-redux'
+import { login } from '../actions/userActions'
 import "bootstrap/dist/css/bootstrap.min.css";
+import Message from '../components/outliners/Message'
 
 
 const Login = () => {
+
     const navigate = useNavigate();
-    const { auth, setAuth } = useAuth();
+    const dispatch = useDispatch();
+    
+    // reducer
+    const userLoginReducer = useSelector(state => state.userLoginReducer)
+    const { error, userInfo } = userLoginReducer
 
     const emailRef = useRef();
-    const errRef = useRef();
 
     const [email,setEmail] = useState('');
     const [pwd, setPwd] = useState('');
-    const [errMsg, setErrMsg] = useState('');
+    
+
+    useEffect(() => {
+        if (userInfo) {
+            navigate('/dashboard') // homepage
+        }
+    }, [navigate, userInfo])
 
     useEffect(() => {
         emailRef.current.focus();
     },[])
 
-    useEffect(() => {
-        setErrMsg('');
-    }, [email, pwd])
-
     const handleSubmit = async (e) => {
         e.preventDefault();
-        let formData = new FormData()
-        formData.append('username', email);
-        formData.append('password', pwd);
-        try {
-            const response = await axios.post(
-                "/auth",
-                formData,
-                {withCredentials: true}
-            );
-            // console.log(JSON.stringify(response?.data));
-            // console.log(JSON.stringify(response));
-            const accessToken = response?.data?.access_token;
-            console.log(accessToken)
-            // const roles = response?.data?.roles;
-            setAuth({ email, accessToken });
-            //clear state and controlled inputs
-            setEmail('');
-            setPwd('');
-            console.log(auth?.accessToken)
-            navigate("/dashboard");
-            
-        } catch (err) {
-            if (!err?.response) {
-                setErrMsg('No Server Response');
-            } else if (err.response?.status === 400) {
-                setErrMsg('Missing Email or Password');
-            } else if (err.response?.status === 401) {
-                setErrMsg('Unauthorized');
-            } else {
-                setErrMsg('Login Failed');
-            }
-            errRef.current.focus();
-        }
+        dispatch(login(email, pwd))
+        setEmail('');
+        setPwd('');
     }
     return(
         <div style={{
@@ -68,13 +44,12 @@ const Login = () => {
             <div className="container px-4 px-lg-5">
                 <div className="row gx-4 gx-lg-5 ">
                     <div className="col-md-4 mb-5">
-                        
+
                     </div>
                     <div className="col-md-4 mb-5">
                             <div className="card h-100">
                                 <div className="card-body">
-                                {errMsg &&
-                                <p ref={errRef} aria-live="assertive">{errMsg}</p>}
+                                {error && <Message variant='danger'>Incorrect Email or Password!</Message>}        
                                         <form onSubmit={handleSubmit}>
                                             <div className="form-group">
                                             <label htmlFor="email">Email Address</label>

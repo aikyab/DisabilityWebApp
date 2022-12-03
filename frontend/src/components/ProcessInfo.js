@@ -43,7 +43,6 @@ const ProcessInfo = () => {
                 </div>
             </div>
         </div>
-        
     </>
   )
 }

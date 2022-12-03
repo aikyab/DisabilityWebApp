@@ -9,6 +9,8 @@ services:
       - POSTGRES_USER=dwapp_db
       - POSTGRES_PASSWORD=t32FcAGb^Bm7
       - POSTGRES_DB=dw_dbpr
+    depends_on:
+      - postgres
   web:
     build: .
     command: bash -c "alembic upgrade head && uvicorn main:app --host 0.0.0.0 --port 8000 --reload"

@@ -5,8 +5,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import axios from '../api/Axios';
 import { Link } from "react-router-dom";
 import { useNavigate } from 'react-router-dom';
+import Message from './outliners/Message';
 import "bootstrap/dist/css/bootstrap.min.css"
-
+/* eslint-disable */
 const EMAIL_REGEX = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
 const REGISTER_URL="/users";
@@ -15,7 +16,7 @@ const Registration = () => {
 
     const emailRef = useRef();
     const errRef = useRef();
-    const navigate = useNavigate()
+    const navigate = useNavigate();
 
     const [email, setEmail] = useState('');
     const [validEmail, setValidName] = useState(false);
@@ -68,7 +69,6 @@ const Registration = () => {
                         "full_name": fullName, 
                         "date_of_birth": birthDate.toString().replace(/-/g,'_'),
                         "created_date": currDate.replace(/-/g,'_'), }
-        console.log(inputData)
         try {
         const response = await axios.post(REGISTER_URL,
             inputData,
@@ -77,7 +77,7 @@ const Registration = () => {
             }
         );
                 // TODO: remove console.logs before deployment
-        console.log(JSON.stringify(response?.data));
+        // console.log(JSON.stringify(response?.data));
             
         //clear state and controlled inputs
         setEmail('');
@@ -88,7 +88,7 @@ const Registration = () => {
             if (!err?.response) {
                     setErrMsg('No Server Response');
                 } else if (err.response?.status === 403) {
-                        setErrMsg('Email already exists');
+                        setErrMsg(err.response?.data?.detail);
                     } else {
                             setErrMsg('Registration Failed')
                         }
@@ -108,8 +108,9 @@ const Registration = () => {
                     <div className="col-md-4 mb-5">
                             <div className="card h-100">
                                 <div className="card-body">
-                                {errMsg &&
-                                <p ref={errRef} aria-live="assertive">{errMsg}</p>}
+                                {/* {errMsg && */}
+                                {/* // <p ref={errRef} aria-live="danger">{errMsg}</p>} */}
+                                {errMsg && <Message variant='danger'>{errMsg}</Message>}
                                 <form onSubmit={handleSubmit}>
                                     <div className="form-group">
                                         <label htmlFor="username"> Email Address 

@@ -2,16 +2,16 @@ from pydantic import BaseModel
 from datetime import datetime
 from uuid import uuid4
 from datetime import datetime
-from typing import Optional
+from typing import Optional, List
 from pydantic import EmailStr
 
 class UserBase(BaseModel):
-    uuid: str
+    uuid: str = str(uuid4())
     email: EmailStr
     password: str
     full_name: str
     date_of_birth: datetime
-    created_date: datetime
+    created_date: datetime = datetime.now()
 
     class Config:
         orm_mode = True
@@ -21,6 +21,19 @@ class UserOut(BaseModel):
 
     class Config:
         orm_mode = True
+
+class UserDetails(BaseModel):
+    email: EmailStr
+    full_name: str
+    date_of_birth: datetime
+    surveys: int = 0
+    created_date: datetime
+
+    class Config:
+        orm_mode = True
+
+class AccountDeletePassword(BaseModel):
+    password: str
 
 class UserLogin(BaseModel):
     email: EmailStr

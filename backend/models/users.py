@@ -12,5 +12,5 @@ class User(Base):
     password = Column(String, nullable=False)
     full_name = Column(String)
     date_of_birth = Column(TIMESTAMP)
-    created_date = Column(TIMESTAMP(timezone=True))
+    created_date = Column(TIMESTAMP)
     survey = relationship("Survey", back_populates="users")

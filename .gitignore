@@ -2,3 +2,4 @@ backend/.env
 backend/.venv
 foo.db
 backend/__pycache__
+backend/college_data.xlsx

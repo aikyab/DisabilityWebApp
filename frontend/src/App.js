@@ -1,15 +1,19 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import "./App.css";
-import Dashboard from "./components/Dashboard";
+import Dashboard from "./components/outliners/Dashboard"
 import Home from "./components/Home";
-// import Landing from "./components/Landing";
 import Login from "./components/Login";
 import Navbar from "./components/Navbar";
 import Registration from "./components/Registration";
 import ProcessInfo from './components/ProcessInfo';
-import Footer from './components/Footer';
-import Survey from './components/Survey';
-// import useToken from './hooks/useToken';
+import Footer from './components/outliners/Footer';
+import Surveys from './components/Surveys';
+import Profile from './components/Profile';
+import Random from './components/outliners/random';
+import Results from './components/Results';
+import NewSurvey from './components/NewSurvey';
+import UpdateEmail from './components/UpdateUserEmail';
+import DeleteUserAccount from './components/DeleteAccount';
 
 
 function App() {
@@ -23,15 +27,22 @@ function App() {
         <Router>
         <Navbar />
           <Routes>
-          <Route index element={<Login />} />
+          <Route index element={<Home />} />
           <Route path="login" element={<Login />} />
           <Route path="register" element={<Registration />} />
+          <Route path="home" element={<Home />} />
+          <Route path="random" element={<Random />} />
           <Route path="processInfo" element={<ProcessInfo />} />
           <Route path="dashboard" element={<Dashboard/>}>
             <Route index element={<Home />} />
             <Route path="home" element={<Home />} />
-            <Route path="survey" element={<Survey />} />
+            <Route path="surveys" element={<Surveys />} /> 
+            <Route path="newSurvey" element={<NewSurvey />} />
             <Route path="processInfo" element={<ProcessInfo />} />
+            <Route path="userProfile" element={<Profile />} />
+            <Route path="surveyResults" element={<Results />}/>
+            <Route path="updateEmail" element={<UpdateEmail />}/>
+            <Route path="deleteAccount" element={<DeleteUserAccount />}/>
             {/* <Route path="account" element={<Account />} /> */}
           </Route>
         </Routes>

@@ -32,7 +32,7 @@ def verify_access_token(token: str, credentials_exception):
 
 def get_current_user(token: str = Depends(oauth2_scheme), db: Session = Depends(get_db)):
     credentials_exception = HTTPException(status_code=status.HTTP_401_UNAUTHORIZED,
-    detail="Could not validate credentials", headers={"WWW-Authenticate": "Bearer"})
+    detail="Your session has expired! Please log in again.", headers={"WWW-Authenticate": "Bearer"})
 
     token = verify_access_token(token, credentials_exception)
     return db.query(User).filter(User.uuid == token.uuid)
