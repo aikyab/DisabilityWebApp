@@ -6,7 +6,7 @@ import json
 dataframe = openpyxl.load_workbook("/Users/aikyab/Documents/DWebApp/backend/college_data.xlsx")
 
 # Define variable to read sheet
-dataframe1 = dataframe.active
+# dataframe1 = dataframe.active
 
 def post_universities():
         
