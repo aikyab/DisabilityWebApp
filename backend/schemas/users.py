@@ -10,7 +10,7 @@ class UserBase(BaseModel):
     email: EmailStr
     password: str
     full_name: str
-    date_of_birth: datetime
+    date_of_birth: str
     created_date: datetime = datetime.now()
 
     class Config:
@@ -25,7 +25,7 @@ class UserOut(BaseModel):
 class UserDetails(BaseModel):
     email: EmailStr
     full_name: str
-    date_of_birth: datetime
+    date_of_birth: str
     surveys: int = 0
     created_date: datetime
 

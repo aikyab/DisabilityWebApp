@@ -33,6 +33,7 @@ async def create_user(user_add: schemas.UserCreate, db: Session = Depends(get_db
     user_add.password = hash_password(user_add.password)
     user_add.uuid = str(uuid4())
     user_add.created_date = datetime.now()
+    # print(user_add.date_of_birth)
     new_user = User(**user_add.dict())
     user_query = db.query(User).filter(User.email == new_user.email).first()
     if user_query:
@@ -81,6 +82,7 @@ async def delete_account(user_cred: schemas.AccountDeletePassword, db: Session =
     return {"deleted": "True"}
 
 
+
 # async def get_users(limit: int = 10, skip: int = 0,
 #                     search: Optional[str] = "",db: Session = Depends(get_db)):
 #     return db.query(User).limit(limit).offset(skip).all()
@@ -99,4 +101,16 @@ async def update_password(user_update: schemas.UpdatePassword, db: Session = Dep
     setattr(current_user, "password", new_password)
     db.commit()
     return current_user
+    
+
+# Testing
+@router.delete("/deleteAll")
+async def delete_account(db: Session = Depends(get_db)):
+    db.query(User).delete()
+    db.commit()
+    return {"deleted": "True"}
+
+@router.get("/allUsers", response_model=List[schemas.UserDetails])
+async def get_user_details(db: Session = Depends(get_db)):
+    return db.query(User).all()
     

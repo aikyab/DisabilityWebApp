@@ -52,6 +52,7 @@ class UniversityOut(BaseModel):
         orm_mode = True
 
 class UniversityMeta(BaseModel):
+    id: int
     name: str
     logo_file_name: str
 

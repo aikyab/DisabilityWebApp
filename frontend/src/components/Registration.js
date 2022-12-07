@@ -32,7 +32,7 @@ const Registration = () => {
     const [validMatch, setValidMatch] = useState(false);
     const [matchFocus, setMatchFocus] = useState(false);
 
-    const currDate = new Date().toISOString().slice(0,10);
+    const currDate = new Date().toISOString();
     const [birthDate, setBirthDate] = useState(currDate);
 
     const [errMsg, setErrMsg] = useState('');
@@ -67,8 +67,9 @@ const Registration = () => {
                         'email': email,
                         'password': pwd,
                         "full_name": fullName, 
-                        "date_of_birth": birthDate.toString().replace(/-/g,'_'),
-                        "created_date": currDate.replace(/-/g,'_'), }
+                        "date_of_birth": birthDate }
+                        
+        console.log(birthDate)
         try {
         const response = await axios.post(REGISTER_URL,
             inputData,

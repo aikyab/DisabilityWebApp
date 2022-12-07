@@ -1,4 +1,3 @@
-
 from fastapi import status, HTTPException, Depends, APIRouter
 from sqlalchemy.orm import Session
 from database import get_db
@@ -34,3 +33,9 @@ async def get_uni_by_id(id: int, db: Session = Depends(get_db)):
                     detail=f"No university with id {id} record found!")
     return fetched_uni
 
+@router.delete("/")
+async def delete_universities(db: Session = Depends(get_db)):
+    
+    db.query(University).delete()
+    db.commit()
+    return {"Deleted" : "True"}

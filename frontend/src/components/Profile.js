@@ -50,12 +50,13 @@ const Profile = () => {
     let birthDate = userAccDetails?.date_of_birth
     if (birthDate){
         Moment.locale('en');
-        birthDate = Moment(birthDate).format('d MMM YYYY')
+        birthDate = Moment(birthDate).format('DD MMM YYYY')
     }
     let createdDate = userAccDetails?.created_date
     if (createdDate){
         Moment.locale('en');
-        createdDate = Moment(createdDate).format('d MMM YYYY')
+        createdDate = Moment(createdDate).format('DD MMM YYYY')
+        console.log(createdDate)
     }
 
   return (

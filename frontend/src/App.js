@@ -14,6 +14,9 @@ import Results from './components/Results';
 import NewSurvey from './components/NewSurvey';
 import UpdateEmail from './components/UpdateUserEmail';
 import DeleteUserAccount from './components/DeleteAccount';
+import UniversityList from './components/UniversityList';
+import UniDetails from './components/UniDetails';
+import Landing from './components/Landing';
 
 
 function App() {
@@ -34,16 +37,17 @@ function App() {
           <Route path="random" element={<Random />} />
           <Route path="processInfo" element={<ProcessInfo />} />
           <Route path="dashboard" element={<Dashboard/>}>
-            <Route index element={<Home />} />
-            <Route path="home" element={<Home />} />
+            <Route index element={<Landing />} />
+            <Route path="landing" element={<Landing />} />
             <Route path="surveys" element={<Surveys />} /> 
             <Route path="newSurvey" element={<NewSurvey />} />
             <Route path="processInfo" element={<ProcessInfo />} />
             <Route path="userProfile" element={<Profile />} />
             <Route path="surveyResults" element={<Results />}/>
+            <Route path="universities" element={<UniversityList />} />
+            <Route path="university/:id" element={<UniDetails />} />
             <Route path="updateEmail" element={<UpdateEmail />}/>
             <Route path="deleteAccount" element={<DeleteUserAccount />}/>
-            {/* <Route path="account" element={<Account />} /> */}
           </Route>
         </Routes>
         </Router>

@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { login } from '../actions/userActions'
 import "bootstrap/dist/css/bootstrap.min.css";
 import Message from '../components/outliners/Message'
+import { checkTokenValidation } from '../actions/userActions';
 
 
 const Login = () => {
@@ -15,6 +16,10 @@ const Login = () => {
     const userLoginReducer = useSelector(state => state.userLoginReducer)
     const { error, userInfo } = userLoginReducer
 
+    // check token validation reducer
+    const checkTokenValidationReducer = useSelector(state => state.checkTokenValidationReducer)
+    const { error: tokenError } = checkTokenValidationReducer
+
     const emailRef = useRef();
 
     const [email,setEmail] = useState('');
@@ -22,7 +27,8 @@ const Login = () => {
     
 
     useEffect(() => {
-        if (userInfo) {
+        // dispatch(checkTokenValidation())
+        if(userInfo) {
             navigate('/dashboard') // homepage
         }
     }, [navigate, userInfo])

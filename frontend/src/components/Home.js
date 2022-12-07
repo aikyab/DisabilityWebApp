@@ -5,7 +5,7 @@ const Home = () => {
         <div className="container px-4 px-lg-5" style={{padding: "100px"}}>
             <div className="row gx-4 gx-lg-5 align-items-center my-5">
                 <div className="col-lg-7">
-                    {/* <img className="img-fluid rounded mb-4 mb-lg-0" src="assets/istockphoto-1196667100-612x612.jpg" alt="..."/> */}
+                    <img className="img-fluid rounded mb-4 mb-lg-0" src="https://i.imgur.com/YeWtjeh.jpg" alt="..."/>
                     </div>
                 <div className="col-lg-5">
                     <h1><strong>Interested in college and have a disability? Find colleges that meet your needs.</strong></h1>
@@ -62,7 +62,7 @@ const Home = () => {
                     <a className="btn btn-primary" style={{color: "white", fontWeight: "600"}} href="#!">Learn More</a>
                 </div>
 
-                <div className="col-lg-7"><img className="img-fluid rounded mb-4 mb-lg-0" src="assets/istockphoto-899704912-612x612.jpg" alt="..."/></div>
+                <div className="col-lg-7"><img className="img-fluid rounded mb-4 mb-lg-0" src="https://i.imgur.com/E8O9Hp7.jpg" alt="..."/></div>
             </div>
         </div>
 
@@ -73,7 +73,7 @@ const Home = () => {
                 <div className="row align-items-center">
                     <div className="col-md-4 d-flex">
                         <div className="card mb-3">
-                            {/* <img className="card-img-top" src="https://education.uic.edu/wp-content/uploads/sites/137/2017/11/Profile-Lisa-Cushing.jpg" alt="John Doe" style="height: 300px; width: 300px;"> */}
+                            {/* <img className="card-img-top" src="https://education.uic.edu/wp-content/uploads/sites/137/2017/11/Profile-Lisa-Cushing.jpg" alt="John Doe" style="height: 300px; width: 300px;" /> */}
                             <div className="card-body py-3">
                                 <h5 className="mb-0">Lisa Cushing</h5>
                                 <span>Principal Researcher, UIC</span>

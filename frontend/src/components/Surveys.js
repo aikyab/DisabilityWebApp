@@ -13,6 +13,38 @@ const Surveys = () => {
     <div>
         <br />
         <Container>
+        <Row>
+            <Card className="mb-4">
+              <Card.Body>
+                <Container>
+                    <Row>
+                    <Link
+                        to="/dashboard/surveyResults">
+                      <h5 style={{textAlign: "center"}}>
+                        Survey 1
+                      </h5>
+                    </Link>
+                    </Row>
+                </Container>
+              </Card.Body>
+              </Card>
+            </Row>
+            <Row>
+            <Card className="mb-4">
+              <Card.Body>
+                <Container>
+                    <Row>
+                    <Link
+                        to="/dashboard/surveyResults">
+                      <h5 style={{textAlign: "center"}}>
+                        Survey 2
+                      </h5>
+                    </Link>
+                    </Row>
+                </Container>
+              </Card.Body>
+              </Card>
+            </Row>
             <Row>
             <Card className="mb-4">
               <Card.Body>
@@ -29,7 +61,6 @@ const Surveys = () => {
                 </Container>
               </Card.Body>
               </Card>
-
             </Row>
         </Container>
     </div>

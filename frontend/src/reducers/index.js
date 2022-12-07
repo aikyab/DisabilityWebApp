@@ -7,12 +7,19 @@ import {
     deleteUserAccountReducer
 } from "./userReducer";
 
+import {
+    uniListReducer,
+    uniDetailsReducer
+} from "./assetReducer";
+
 const allReducers = combineReducers({
     userLoginReducer,
     userDetailsReducer,
     checkTokenValidationReducer,
     userDetailsUpdateReducer,
-    deleteUserAccountReducer
+    deleteUserAccountReducer,
+    uniListReducer,
+    uniDetailsReducer
 })
 
 export default allReducers;
