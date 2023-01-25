@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dwebapp-api
+  labels:
+    name: dwebapp-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: dwebapp-api
+  template:
+    metadata:
+      labels:
+        app: dwebapp-api
+    spec:
+      containers:
+        - name: dwebapp-api
+          image: aikyab4u/dwebapp-api:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8000
+          readinessProbe:
+            tcpSocket:
+              port: 8000
+            initialDelaySeconds: 120
+            periodSeconds: 10
+            timeoutSeconds: 5
+            failureThreshold: 10
+          livenessProbe:
+            tcpSocket:
+              port: 8000
+            initialDelaySeconds: 150
+            periodSeconds: 20
+            timeoutSeconds: 5
+            failureThreshold: 10
+          volumeMounts:
+            - name: env-file
+              readOnly: true
+              mountPath: "/app/.env"
+              subPath: .env
+      volumes:
+        - name: env-file
+          secret:
+            secretName: dwebapp-api-credentials

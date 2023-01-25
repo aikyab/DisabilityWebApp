@@ -1,15 +1,36 @@
 {
-    "university_type": "Public",
-    "us_state": "Illinois",
-    "geo_setting": "Urban",
-    "school_size": "Medium",
-    "selectivity": "Most Selective",
-    "gpa": 3.4,
-    "act": 1400,
-    "sat": 1450,
-    "general_accm": ["Preferred","Preferred","Preferred","Preferred",
-    "Preferred","Preferred","Preferred","Preferred","Preferred","Preferred","Preferred"],
-    "supports": ["Preferred","Preferred","Preferred","Preferred","Preferred"],
-    "other": ["Preferred","Preferred","Preferred","Preferred","Preferred"],
-    "majors": ["Computer Science","Information Technology","Machine Learning"]
+    "university_type": "Private",
+    "us_states": [
+        "Alaska",
+        "Colorado"
+    ],
+    "geo_setting": [
+        "Suburban",
+        "Rural"
+    ],
+    "school_size": [
+        "Large"
+    ],
+    "selectivity": "Any",
+    "asl_interpreters": "Essential",
+    "note_takers": "Don’t Need",
+    "recorded_lectures": "Essential",
+    "assist_ldevices": "Essential",
+    "course_subwaivers": "Preferred",
+    "assistive_tech": "Essential",
+    "adaptive_equipment": "Essential",
+    "preferential_setting": "Essential",
+    "alt_text_materials": "Essential",
+    "rem_arch_barriers": "Preferred",
+    "test_acc": "Preferred",
+    "writing": "Preferred",
+    "math": "Preferred",
+    "career_center": "Preferred",
+    "study_skills": "Preferred",
+    "tutoring": "Essential",
+    "prog_iddstudents": "Preferred",
+    "summer_bridge": "Essential",
+    "social_skills": "Essential",
+    "faculty_mentoring": "Preferred",
+    "peer_mentoring": "Preferred"
 }

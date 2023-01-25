@@ -8,7 +8,7 @@ import { Card } from 'react-bootstrap'
 const Navbar = () => {
 
     const navigate = useNavigate();
-    const dispatch = useDispatch()
+    const dispatch = useDispatch();
 
     const userLoginReducer = useSelector(state => state.userLoginReducer)
     const { userInfo } = userLoginReducer
@@ -25,7 +25,7 @@ const Navbar = () => {
             { userInfo?.access_token ?
                 <div className="collapse navbar-collapse" id="navbarSupportedContent">
                     <Link className="navbar-brand" to="/dashboard/landing">
-                    <img variant="top" src="https://i.imgur.com/SybeeZv.png" height="60" width="100"/>
+                    <img referrerPolicy="no-referrer" variant="top" src="https://i.imgur.com/SybeeZv.png" height="50" width="100"/>
                     </Link>
                     <ul className="navbar-nav ms-auto mb-3 mb-lg-0">
                         <li className="nav-item"><Link className="nav-link" to="/dashboard/processInfo">Application Process</Link></li>
@@ -39,7 +39,7 @@ const Navbar = () => {
             :
             <div className="collapse navbar-collapse" id="navbarSupportedContent">
                     <Link className="navbar-brand" to="/home">
-                        <img variant="top" src="https://i.imgur.com/SybeeZv.png" height="60" width="100"/>
+                        <img referrerPolicy="no-referrer" variant="top" src="https://i.imgur.com/SybeeZv.png" height="50" width="100"/>
                     </Link>
                     <ul className="navbar-nav ms-auto mb-3 mb-lg-0">
                     <li className="navbar-item"><Link className="nav-link" to="/login">Login</Link></li>

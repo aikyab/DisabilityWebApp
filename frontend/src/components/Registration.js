@@ -68,7 +68,7 @@ const Registration = () => {
                         'password': pwd,
                         "full_name": fullName, 
                         "date_of_birth": birthDate }
-                        
+
         console.log(birthDate)
         try {
         const response = await axios.post(REGISTER_URL,
@@ -111,6 +111,7 @@ const Registration = () => {
                                 <div className="card-body">
                                 {/* {errMsg && */}
                                 {/* // <p ref={errRef} aria-live="danger">{errMsg}</p>} */}
+                                <img variant="top" src="https://i.imgur.com/SybeeZv.png" height="150" width="250" style={{alignItems: 'center'}}/>
                                 {errMsg && <Message variant='danger'>{errMsg}</Message>}
                                 <form onSubmit={handleSubmit}>
                                     <div className="form-group">

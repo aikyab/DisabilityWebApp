@@ -25,4 +25,4 @@ app.include_router(university.router,prefix="/university")
 
 @app.get("/")
 async def main():
-    return {"message": "Hello World changed"}
+    return {"message": "Disabilities API Router"}

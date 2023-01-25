@@ -55,6 +55,7 @@ const Login = () => {
                     <div className="col-md-4 mb-5">
                             <div className="card h-100">
                                 <div className="card-body">
+                                <img referrerPolicy="no-referrer" variant="top" src="https://i.imgur.com/SybeeZv.png" height="150" width="250" style={{alignItems: 'center'}}/>
                                 {error && <Message variant='danger'>Incorrect Email or Password!</Message>}        
                                         <form onSubmit={handleSubmit}>
                                             <div className="form-group">

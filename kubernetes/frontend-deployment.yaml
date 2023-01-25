@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dwebapp-frontend
+  labels:
+    name: dwebapp-frontend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: dwebapp-frontend
+  template:
+    metadata:
+      labels:
+        app: dwebapp-frontend
+    spec:
+      containers:
+        - name: dwebapp-frontend
+          image: aikyab4u/webapp:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 80
+          livenessProbe:
+            httpGet:
+              path: /health/local
+              scheme: HTTP
+              port: 80
+            initialDelaySeconds: 120
+            periodSeconds: 5
+            timeoutSeconds: 5
+            failureThreshold: 10
+          readinessProbe:
+            httpGet:
+              path: /admin/health
+              scheme: HTTP
+              port: 80
+            initialDelaySeconds: 150
+            periodSeconds: 5
+            timeoutSeconds: 5
+            failureThreshold: 10
+      imagePullSecrets:
+        - name: regcred
