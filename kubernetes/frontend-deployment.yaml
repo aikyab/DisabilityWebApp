@@ -16,27 +16,9 @@ spec:
     spec:
       containers:
         - name: dwebapp-frontend
-          image: aikyab4u/webapp:latest
+          image: aikyab4u/dwebapp-frontend:latest
           imagePullPolicy: Always
           ports:
             - containerPort: 80
-          livenessProbe:
-            httpGet:
-              path: /health/local
-              scheme: HTTP
-              port: 80
-            initialDelaySeconds: 120
-            periodSeconds: 5
-            timeoutSeconds: 5
-            failureThreshold: 10
-          readinessProbe:
-            httpGet:
-              path: /admin/health
-              scheme: HTTP
-              port: 80
-            initialDelaySeconds: 150
-            periodSeconds: 5
-            timeoutSeconds: 5
-            failureThreshold: 10
       imagePullSecrets:
         - name: regcred

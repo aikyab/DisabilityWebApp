@@ -8,9 +8,6 @@ kubectl apply -f ./kubernetes/postgres-storage.yaml
 echo "Creating the api server credentials..."
 kubectl apply -f ./kubernetes/api-secret.yaml
 
-# echo "Creating the api server credentials..."
-# kubectl apply -f ./kubernetes/frontend-secret.yaml
-
 echo "Creating the Postgres deployment and service..."
 kubectl apply -f ./kubernetes/postgres-deployment.yaml
 kubectl apply -f ./kubernetes/postgres-service.yaml
@@ -23,7 +20,6 @@ echo "Creating the React deployment and service..."
 kubectl apply -f ./kubernetes/frontend-deployment.yaml
 kubectl apply -f ./kubernetes/frontend-service.yaml
 
-# echo "Adding the ingress..."
-# minikube addons enable ingress
-# minikube addons enable ingress-dns
-# kubectl apply -f ./kubernetes/aws-ingress.yaml
+# echo "Creating Ingress Object"
+# kubectl apply -f ./kubernetes/ingress.yaml
+

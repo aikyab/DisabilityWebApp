@@ -20,20 +20,6 @@ spec:
           imagePullPolicy: Always
           ports:
             - containerPort: 8000
-          readinessProbe:
-            tcpSocket:
-              port: 8000
-            initialDelaySeconds: 120
-            periodSeconds: 10
-            timeoutSeconds: 5
-            failureThreshold: 10
-          livenessProbe:
-            tcpSocket:
-              port: 8000
-            initialDelaySeconds: 150
-            periodSeconds: 20
-            timeoutSeconds: 5
-            failureThreshold: 10
           volumeMounts:
             - name: env-file
               readOnly: true
