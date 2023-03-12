@@ -10,7 +10,6 @@ class Survey(Base):
 
     id = Column(Integer, primary_key=True, index=True, nullable=False, autoincrement=True)
     university_type = Column(String, nullable=False)
-    us_states = Column(JSON,nullable=False)
     geo_setting = Column(String, nullable=False)
     school_size = Column(JSON, nullable=False)
     selectivity = Column(String, nullable=False)

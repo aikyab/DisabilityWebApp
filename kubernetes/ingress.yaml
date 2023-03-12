@@ -19,10 +19,10 @@ spec:
             name: dwebapp-frontend-service
             port:
               number: 80
-      - path: /api(/|$)(.*)
-        pathType: Prefix
-        backend:
-          service:
-            name: dwebapp-api-service
-            port:
-              number: 80
+      # - path: /api(/|$)(.*)
+      #   pathType: Prefix
+      #   backend:
+      #     service:
+      #       name: dwebapp-api-service
+      #       port:
+      #         number: 80

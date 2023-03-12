@@ -1,9 +1,5 @@
 {
     "university_type": "Private",
-    "us_states": [
-        "Alaska",
-        "Colorado"
-    ],
     "geo_setting": [
         "Suburban",
         "Rural"
@@ -13,24 +9,24 @@
     ],
     "selectivity": "Any",
     "asl_interpreters": "Essential",
-    "note_takers": "Don’t Need",
+    "note_takers": "Don't Need",
     "recorded_lectures": "Essential",
     "assist_ldevices": "Essential",
-    "course_subwaivers": "Preferred",
+    "course_subwaivers": "Don't Need",
     "assistive_tech": "Essential",
     "adaptive_equipment": "Essential",
     "preferential_setting": "Essential",
     "alt_text_materials": "Essential",
-    "rem_arch_barriers": "Preferred",
-    "test_acc": "Preferred",
-    "writing": "Preferred",
-    "math": "Preferred",
-    "career_center": "Preferred",
-    "study_skills": "Preferred",
+    "rem_arch_barriers": "Don't Need",
+    "test_acc": "Essential",
+    "writing": "Essential",
+    "math": "Essential",
+    "career_center": "Don't Need",
+    "study_skills": "Don't Need",
     "tutoring": "Essential",
-    "prog_iddstudents": "Preferred",
+    "prog_iddstudents": "Don't Need",
     "summer_bridge": "Essential",
     "social_skills": "Essential",
-    "faculty_mentoring": "Preferred",
-    "peer_mentoring": "Preferred"
+    "faculty_mentoring": "Don't Need",
+    "peer_mentoring": "Don't Need"
 }

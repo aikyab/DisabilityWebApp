@@ -16,9 +16,11 @@ echo "Creating the FastAPI deployment and service..."
 kubectl apply -f ./kubernetes/api-deployment.yaml
 kubectl apply -f ./kubernetes/api-service.yaml
 
-echo "Creating the React deployment and service..."
-kubectl apply -f ./kubernetes/frontend-deployment.yaml
-kubectl apply -f ./kubernetes/frontend-service.yaml
+# echo "Creating the React deployment and service..."
+
+# kubectl apply -f ./kubernetes/react-secret.yaml
+# kubectl apply -f ./kubernetes/frontend-deployment.yaml
+# kubectl apply -f ./kubernetes/frontend-service.yaml
 
 # echo "Creating Ingress Object"
 # kubectl apply -f ./kubernetes/ingress.yaml

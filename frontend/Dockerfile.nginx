@@ -1,0 +1,4 @@
+# Final stage for creating the final Docker image
+FROM --platform=linux/amd64 nginx:1.19-alpine
+
+COPY build /var/www/html

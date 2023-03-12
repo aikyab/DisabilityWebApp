@@ -6,7 +6,6 @@ from datetime import datetime
 class SurveyBase(BaseModel):
 
     university_type: str
-    us_states: List[str]
     geo_setting: Optional[List[str]]
     school_size: List[str]
     selectivity: str

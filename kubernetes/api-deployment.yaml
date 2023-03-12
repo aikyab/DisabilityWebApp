@@ -5,7 +5,7 @@ metadata:
   labels:
     name: dwebapp-api
 spec:
-  replicas: 1
+  replicas: 3
   selector:
     matchLabels:
       app: dwebapp-api
@@ -25,6 +25,13 @@ spec:
               readOnly: true
               mountPath: "/app/.env"
               subPath: .env
+          resources:
+            limits:
+              memory: 100Mi
+              cpu: 50m
+            requests:
+              memory: 40Mi
+              cpu: 20m
       volumes:
         - name: env-file
           secret:

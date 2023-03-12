@@ -1,8 +1,8 @@
 """init_tables
 
-Revision ID: 291b6a64d988
+Revision ID: fc62e717d359
 Revises: 
-Create Date: 2022-12-04 01:22:57.827123
+Create Date: 2023-02-10 23:47:00.760073
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 from sqlalchemy.dialects import postgresql
 
 # revision identifiers, used by Alembic.
-revision = '291b6a64d988'
+revision = 'fc62e717d359'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -73,18 +73,10 @@ def upgrade() -> None:
     op.create_index(op.f('ix_users_email'), 'users', ['email'], unique=True)
     op.create_table('survey',
     sa.Column('id', sa.Integer(), autoincrement=True, nullable=False),
-    sa.Column('university_type', sa.String(), nullable=True),
-    sa.Column('us_state', sa.String(), nullable=True),
-    sa.Column('geo_setting', sa.String(), nullable=True),
-    sa.Column('school_size', sa.String(), nullable=True),
-    sa.Column('selectivity', sa.String(), nullable=True),
-    sa.Column('gpa', sa.Float(), nullable=True),
-    sa.Column('act', sa.Float(), nullable=True),
-    sa.Column('sat', sa.Float(), nullable=True),
-    sa.Column('general_accm', postgresql.JSON(astext_type=sa.Text()), nullable=True),
-    sa.Column('supports', postgresql.JSON(astext_type=sa.Text()), nullable=True),
-    sa.Column('other', postgresql.JSON(astext_type=sa.Text()), nullable=True),
-    sa.Column('majors', postgresql.JSON(astext_type=sa.Text()), nullable=True),
+    sa.Column('university_type', sa.String(), nullable=False),
+    sa.Column('geo_setting', sa.String(), nullable=False),
+    sa.Column('school_size', postgresql.JSON(astext_type=sa.Text()), nullable=False),
+    sa.Column('selectivity', sa.String(), nullable=False),
     sa.Column('created_date', sa.TIMESTAMP(timezone=True), nullable=True),
     sa.Column('user_uuid', sa.String(), nullable=False),
     sa.ForeignKeyConstraint(['user_uuid'], ['users.uuid'], ondelete='CASCADE'),
